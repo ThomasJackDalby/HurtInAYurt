@@ -1,2 +1,2 @@
 # Ignore stuff
-.packages/
+node_modules/
