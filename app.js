@@ -1,5 +1,6 @@
 const pixi = require("pixi");
-const express = require('express') 
+const express = require('express');
+const compression = require('compression');
 const socket_io = require('socket.io') 
 const bunyan = require('bunyan');
 const public_ip = require('public-ip');

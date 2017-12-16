@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ThomasJackDalby/HurtInAYurt#readme",
   "dependencies": {
     "bunyan": "^1.8.12",
+    "compression": "^1.7.1",
     "express": "^4.16.2",
     "pixi": "^0.3.1",
     "public-ip": "^2.4.0",
