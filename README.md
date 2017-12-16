@@ -1,23 +1,28 @@
 # HurtInAYurt
 
 Like Hell in a Cell, only in a Yurt
+Top Down multiplayer shooter.
 
-Hurt in a Yurt is a simple game pulled together at a "yurtathon" in 2017.
+## Setup
 
-It's a turn based strategy game, requiring a balance between managing resources, and attacking foes.
+First off, clone this repo locally:
 
-The key game mechanic is in the placing of units, and the building of damage patterns which your units can inflict. In traditional games, these are fixed based on the unit type, but in HurtInAYurt, these are built based upon the customisations done to a unit.
+```
+git clone https:
+```
 
-Maps are rectangular grids, with cells either blocking line or sight, or not.
+Second, you need to install the packages. NPM makes this easy with:
 
-You can view enemy damage patterns for enemies that you can see.
+```
+npm install
+```
 
-## Game mechanics
+Finally, start the node server.
+```
+node app.js 8000
+```
 
-1) Load a turn. 
-2) Apply actions. UI renders up to latest item.
-3) Everything is deterministic? Can forward/rewind.
-4) Save out end state, so can send to other player.
+## Controls
 
-## Framework
+Once connected to the game, you'll see yourself, a bad-ass shooter, who can only move in a 2D plane. Yeah things have gotten rough lately...
 

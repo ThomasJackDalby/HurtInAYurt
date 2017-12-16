@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/ThomasJackDalby/HurtInAYurt/issues"
   },
-  "homepage": "https://github.com/ThomasJackDalby/HurtInAYurt#readme"
+  "homepage": "https://github.com/ThomasJackDalby/HurtInAYurt#readme",
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "express": "^4.16.2",
+    "pixi": "^0.3.1",
+    "socket.io": "^2.0.4"
+  }
 }
