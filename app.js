@@ -1,44 +1,48 @@
-var pixi = require("pixi");
-var express = require('express') 
-var socket_io = require('socket.io') 
-var http = require('banyan');
-var http = require('http');
+const pixi = require("pixi");
+const express = require('express') 
+const socket_io = require('socket.io') 
+const bunyan = require('bunyan');
+const public_ip = require('public-ip');
 
-var app = express();
-var http_server = http.Server(this.app);
-
+var logger = bunyan.createLogger({name: "hurtinayurt"});
 var tag_connection = 'connection';
 var tag_disconnect = 'disconnect';
+var port = 8000;
 
-function YurtServer(port) {
-    this.port = port;
-    this.app = express();
-    this.http_server = http.Server(this.app);
-    this.io = socket_io(this.http_server);
-    this.ipToUserMap = {};
-    this.ipToSocketMap = {};
+var app = express();
+var log = function(req, res, next) {
+    logger.info("Request from " + req);
+    next();
+}
+app.use(log);
+app.use(compression());
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-    this.start = () => {
-        this.app.use(express.static('public'));
-        this.http_server.listen(this.port, () => log('Server listening on *:' + this.port));
-        this.io.on(tag_connection, socket => this.connection(socket));
-    }
+var http_server = http.Server(this.app);
+var io = socket_io(this.http_server);
+var ipToUserMap = {};
+var ipToSocketMap = {};
+
+function start() {
     
-    this.connection = (socket) => {
+    app.listen(80, function() {
 
-        socket.on(tag_disconnect, socket => this.disconnect(socket))
-        socket.on(tag_user_data, data => this.user_data(socket, user, data));
+        public_ip.v4().then(ip => {
+            logger.info("Hurt in a Yurt running at http://"+ip+":"+port+"/");
+        });
+    });
+}
 
-        this.disconnect = function(socket) {
-
-        }
-    }
-
-    this.user_data = (data) => {
-
-        this.socket.broadcast.emit( );
+function connection(socket) {
+    socket.on(tag_disconnect, socket => this.disconnect(socket))
+    socket.on(tag_user_data, data => this.user_data(socket, user, data));
+    this.disconnect = function(socket) {
     }
 }
 
-var server = new YurtServer(8000);
+function user_data(data) {
+    this.socket.broadcast.emit( );
+}
+
 server.start();
